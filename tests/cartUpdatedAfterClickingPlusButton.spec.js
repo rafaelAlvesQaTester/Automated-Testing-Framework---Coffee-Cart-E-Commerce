@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('Assert cart updated correctly after clicking plus for drinks', async ({ page }) => {
-/*
-Test:
+test('Cart updated after clicking plus for drinks', async ({ page }) => {
+  /*
+  Test:
   1. Open the Coffee Cart menu page https://coffee-cart.app/
   2. Click on the "Cappuccino" cup
   3. Click on the "Espresso" cup
@@ -17,7 +17,7 @@ Test:
   12. Assert the Total cost of the Cart is $58.00
 
   Tip: 
-  1. Use filter({hasText: "ItemName"}) to find the required drink row. Do not rely on the exact order of the drinks. 
+  1. Use filter({hasText: "ItemName"}) to find the required drink row. 
+    Do not rely on the exact order of the drinks. 
    */
-
 });

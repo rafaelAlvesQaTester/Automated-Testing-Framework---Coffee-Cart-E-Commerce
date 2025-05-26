@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('Assert cart cleaned after page refresh', async ({ page }) => {
-/*
-Test:
+test('Cart cleaned after page refresh', async ({ page }) => {
+  /*
+  Test:
   1. Open the Coffee Cart menu page https://coffee-cart.app/
   2. Click on the "Cappuccino" cup
   4. Click one the "Cart" link
@@ -14,7 +14,7 @@ Test:
 
   Tips: 
   1. Use "await page.reload();" to reload the page.
-  2. Use filter({hasText: "ItemName"}) to find the required drink row. Do not rely on the exact order of the drinks. 
-   */
-
+  2. Use filter({hasText: "ItemName"}) to find the required drink row.
+    Do not rely on the exact order of the drinks. 
+  */
 });

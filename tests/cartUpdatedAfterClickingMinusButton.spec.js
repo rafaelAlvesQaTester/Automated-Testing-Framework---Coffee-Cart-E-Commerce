@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Assert cart updated correctly after clicking minus for drinks', async ({ page }) => {
+test('Cart updated after clicking minus for drinks', async ({ page }) => {
   /*
   Test:
     1. Open the Coffee Cart menu page https://coffee-cart.app/
@@ -16,8 +16,8 @@ test('Assert cart updated correctly after clicking minus for drinks', async ({ p
     11. Assert that Cappucion is removed from the cart
     12. Assert the message "No coffee, go add some" is visible
   
-    Tip: 
-    1. Use filter({hasText: "ItemName"}) to find the required drink row. Do not rely on the exact order of the drinks. 
-     */
-
+  Tip: 
+    1. Use filter({hasText: "ItemName"}) to find the required drink row. 
+      Do not rely on the exact order of the drinks. 
+  */
 });
