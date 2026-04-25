@@ -3,26 +3,60 @@ import { test, expect } from '@playwright/test';
 test('Discounted Mocha added to the Cart after promo accepting', async ({
   page,
 }) => {
-  /*
-  Test:
-  1. Open the Coffee Cart menu page https://coffee-cart.app/
-  2. Click on the "Cappuccino" cup
-  3. Click on the "Espresso" cup
-  4. Click on the "Americano" cup
-  5. Assert the message
-    "It's your lucky day! Get an extra cup of Mocha for $4." is visible
-  6. Click the button 'Yes, of course!'
-  7. Click one the "Cart" link
-  8. Wait for the URL https://coffee-cart.app/cart 
-  9. Assert the "Espresso" has Total cost '$10.00'
-  10. Assert the "(Discounted) Mocha" has Total cost '$4.00'
-  11. Assert the "Cappuccino" has Total cost '$19.00'
-  12. Assert the "Americano" has Total cost '$7.00'
+  // 1. Open the Coffee Cart menu page
+  await page.goto('https://coffee-cart.app/', {
+    waitUntil: 'domcontentloaded'
+  });
 
-  Tips: 
-  1. Use double-quotes for messages which contains apostrophe.
-    Example: "Nah, I'll skip."
-  2. Use filter({hasText: "ItemName"}) to find the required drink row. 
-    Do not rely on the exact order of the drinks. 
-   */
+  // 2. Click on the "Cappuccino" cup
+  await page.getByTestId('Cappuccino').click();
+
+  // 3. Click on the "Espresso" cup
+  await page.getByTestId('Espresso').click();
+
+  // 4. Click on the "Americano" cup
+  await page.getByTestId('Americano').click();
+
+  // 5. Assert promo message
+  const promoMessage = page.getByText(
+    "It's your lucky day! Get an extra cup of Mocha for $4."
+  );
+  await expect(promoMessage).toBeVisible();
+
+  // 6. Click 'Yes, of course!'
+  await page.getByRole('button', { name: 'Yes, of course!' }).click();
+
+  // 7. Click on the "Cart" link
+  await page.getByLabel('Cart page').click();
+
+  // 8. Wait for the URL
+  await expect(page).toHaveURL('https://coffee-cart.app/cart');
+
+  // ---------- ESPRESSO ----------
+  const espressoItem = page
+    .getByRole('listitem')
+    .filter({ hasText: 'Espresso' });
+
+  await expect(espressoItem).toContainText('$10.00');
+
+  // ---------- MOCHA (DISCOUNTED) ----------
+  const mochaItem = page
+    .getByRole('listitem')
+    .filter({ hasText: 'Mocha' });
+
+  await expect(mochaItem).toContainText('$4.00');
+
+  // ---------- CAPPUCCINO ----------
+  const cappuccinoItem = page
+    .getByRole('listitem')
+    .filter({ hasText: 'Cappuccino' });
+
+  await expect(cappuccinoItem).toContainText('$19.00');
+
+  // ---------- AMERICANO ----------
+  const americanoItem = page
+    .getByRole('listitem')
+    .filter({ hasText: 'Americano' });
+
+  await expect(americanoItem).toContainText('$7.00');
 });
