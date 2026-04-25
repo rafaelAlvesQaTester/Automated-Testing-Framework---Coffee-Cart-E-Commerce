@@ -13,6 +13,10 @@
 
 <!-- Espaço reservado para vídeo/GIF demonstrando os testes -->
 ![Demo Coffee Cart Tests](./demo.gif)
+
+<img width="1900" height="1076" alt="PlayTestes" src="https://github.com/user-attachments/assets/d788103e-73f9-4148-b71b-bf4d9a20163e" />
+
+
 <!-- Adicione seu vídeo ou GIF aqui mostrando os testes sendo executados -->
 
 ---
